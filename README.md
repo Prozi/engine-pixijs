@@ -37,7 +37,7 @@ web + webpack
 
 ```
 const PIXI = require('pixi.js')
-const {Sprite, Container, ParticleContainer} = require('@minininja/pixijs')(PIXI)
+const engine = require('@minininja/pixijs')(PIXI)
 ```
 
 
@@ -45,7 +45,17 @@ node
 
 ```
 const PIXI = require('pixi-shim')
-const {Sprite, Container, ParticleContainer} = require('@minininja/pixijs')(PIXI)
+const engine = require('@minininja/pixijs')(PIXI)
+```
+
+
+then
+
+```
+const scene = new engine.Scene({})
+const object = new engine.Sprite({ onUpdate () { console.log('foo') }})
+scene.addChild(object)
+setInterval(scene.onUpdate.bind(scene), 1000 / 60)
 ```
 
 

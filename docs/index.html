@@ -100,11 +100,15 @@
 <p>... and more to come!</p>
 <h2>Usage</h2><p>web + webpack</p>
 <pre class="prettyprint source"><code>const PIXI = require('pixi.js')
-const {Sprite, Container, ParticleContainer} = require('@minininja/pixijs')(PIXI)</code></pre><p>node</p>
+const engine = require('@minininja/pixijs')(PIXI)</code></pre><p>node</p>
 <pre class="prettyprint source"><code>const PIXI = require('pixi-shim')
-const {Sprite, Container, ParticleContainer} = require('@minininja/pixijs')(PIXI)</code></pre><h2>About</h2><p>All classes are extended from <code>GameObject</code> from <em>The engine</em>.</p>
+const engine = require('@minininja/pixijs')(PIXI)</code></pre><p>then</p>
+<pre class="prettyprint source"><code>const scene = new engine.Scene({})
+const object = new engine.Sprite({ onUpdate () { console.log('foo') }})
+scene.addChild(object)
+setInterval(scene.onUpdate.bind(scene), 1000 / 60)</code></pre><h2>About</h2><p>All classes are extended from <code>GameObject</code> from <em>The engine</em>.</p>
 <h2>License</h2><p>MIT</p>
-<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#x70;&#x72;&#111;&#122;&#105;&#56;&#53;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x70;&#x72;&#111;&#122;&#105;&#56;&#53;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a></p>
+<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#x70;&#x72;&#x6f;&#122;&#105;&#x38;&#x35;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x70;&#x72;&#x6f;&#122;&#105;&#x38;&#x35;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
     </article>
   </section>
 
