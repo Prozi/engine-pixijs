@@ -16,9 +16,9 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@minininja/engine@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@minininja/engine/-/engine-1.0.4.tgz#89d7273d526ec176cf8a51348f5ec47becf94677"
+"@minininja/engine@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@minininja/engine/-/engine-1.0.5.tgz#acc7384601866f5d1fdeb01af792e9ec001bb3f5"
   dependencies:
     http-server "^0.11.1"
     jsdoc-template "https://github.com/braintree/jsdoc-template.git"
@@ -2967,9 +2967,9 @@ jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
 
-"jsdoc-template@https://github.com/braintree/jsdoc-template.git":
+"jsdoc-template@git+https://github.com/braintree/jsdoc-template.git":
   version "3.2.0"
-  resolved "https://github.com/braintree/jsdoc-template.git#9ac837f2a774610c3de55431454777ae2419ba11"
+  resolved "git+https://github.com/braintree/jsdoc-template.git#9ac837f2a774610c3de55431454777ae2419ba11"
 
 jsdom-global@latest:
   version "3.0.2"

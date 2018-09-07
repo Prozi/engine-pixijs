@@ -1,7 +1,7 @@
 'use strict'
 
 const PIXI = require('pixi.js')
-const {Sprite, Container, ParticleContainer} = require('../src')(PIXI)
+const {Sprite, Container, ParticleContainer, Scene} = require('../src')(PIXI)
 
 /*global describe,it,expect*/
 describe('Base TEST', () => {
@@ -16,6 +16,10 @@ describe('Base TEST', () => {
 
   it('ParticleContainer should gracefully work', () => {
     expect(() => new ParticleContainer({})).not.toThrow()
+  })
+
+  it('Scene should gracefully work', () => {
+    expect(() => new Scene({})).not.toThrow()
   })
 
 })

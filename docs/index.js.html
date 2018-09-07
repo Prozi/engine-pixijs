@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      Home - Documentation
+      index.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -48,14 +50,14 @@
 
   <div class="top-nav-wrapper">
     <ul>
-      <li  class="active" >
+      <li >
         <a href="index.html">
           
-          
-            <svg fill="#0095dd" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
               <path d="M0 0h24v24H0z" fill="none"/>
             </svg>
+          
           
         </a>
       </li>
@@ -75,38 +77,84 @@
 
   <div id="main">
     
+      <h1 class="page-title">
+        index.js
+      </h1>
+    
 
     
       
 
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>'use strict'
 
+const {Scene, Script, GameObject} = require('@minininja/engine')
 
-    
+module.exports = function (PIXI) {
 
-      
+  /**
+   * Simple GameObject API Sprite with this.container: PIXI.Sprite
+   */
+  class Sprite extends GameObject {
+    constructor(props) {
+      super(props)
+      this.sprite = new PIXI.Sprite(props.config || null)
+    }
+    onUpdate() {
+      super.onUpdate()
+      this.sprite.x = this.position.x
+      this.sprite.y = this.position.y
+    }
+  }
 
+  /**
+   * Simple GameObject API Container with this.container: PIXI.Container
+   */
+  class Container extends GameObject {
+    constructor(props) {
+      super(props)
+      this.container = new PIXI.Container()
+    }
+    onUpdate() {
+      super.onUpdate()
+      this.container.x = this.position.x
+      this.container.y = this.position.y
+    }
+  }
 
-  <section class="readme">
-    <article>
-      <h1>@minininja/pixijs</h1><p><em>The engine</em> with pixijs. Ready for gamedev.</p>
-<h2>Installation</h2><p><code>yarn add @minininja/pixijs</code></p>
-<h2>Documentation</h2><p>https://prozi.github.io/engine-pixijs/</p>
-<p>Read more about <em>The engine</em> here:</p>
-<p>https://github.com/Prozi/engine/</p>
-<h2>Contents</h2><p>✅ Sprite: GameObject</p>
-<p>✅ Container: GameObject</p>
-<p>✅ ParticleContainer: GameObject</p>
-<p>... and more to come!</p>
-<h2>Usage</h2><p>web + webpack</p>
-<pre class="prettyprint source"><code>const PIXI = require('pixi.js')
-const {Sprite, Container, ParticleContainer} = require('@minininja/pixijs')(PIXI)</code></pre><p>node</p>
-<pre class="prettyprint source"><code>const PIXI = require('pixi-shim')
-const {Sprite, Container, ParticleContainer} = require('@minininja/pixijs')(PIXI)</code></pre><h2>About</h2><p>All classes are extended from <code>GameObject</code> from <em>The engine</em>.</p>
-<h2>License</h2><p>MIT</p>
-<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#x70;&#114;&#111;&#122;&#x69;&#56;&#53;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x70;&#114;&#111;&#122;&#x69;&#56;&#53;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></p>
-    </article>
-  </section>
+   /**
+   * Simple GameObject API ParticleContainer with this.container: PIXI.particles.ParticleContainer
+   */
+   class ParticleContainer extends GameObject {
+    constructor(props) {
+      super(props)
+      this.container = new PIXI.particles.ParticleContainer(props.config || {})
+    }
+    onUpdate() {
+      super.onUpdate()
+      this.container.x = this.position.x
+      this.container.y = this.position.y
+    }
+  }
 
+  /**
+   * Simple GameObject API Container with this.app: PIXI.Application
+   */
+  class PixiScene extends Container {
+    constructor(props) {
+      super(Object.assign({name: 'PixiScene'}, props))
+      this.app = new PIXI.Application(props.config || null)
+      this.app.stage.addChild(this.container)
+      document.body.appendChild(this.app.view)
+    }
+  }
+
+  return {GameObject, Scene: PixiScene, Script, Sprite, Container, ParticleContainer}
+
+}</code></pre>
+  </article>
+</section>
 
     
 
