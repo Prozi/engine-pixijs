@@ -18,6 +18,17 @@ Read more about *The engine* here:
 https://github.com/Prozi/engine/
 
 
+## Contents
+
+✅ Sprite: GameObject
+
+✅ Container: GameObject
+
+✅ ParticleContainer: GameObject
+
+... and more to come!
+
+
 ## Usage
 
 web + webpack
