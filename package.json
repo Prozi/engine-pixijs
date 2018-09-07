@@ -1,6 +1,6 @@
 {
   "name": "@minininja/pixijs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "mini.ninja Game Engine + pixi.js variant - universal for bootstrapping games in 2d.",
   "main": "src/index.js",
   "scripts": {
@@ -26,10 +26,10 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "@minininja/engine": "^1.0.5"
+    "@minininja/engine": "^1.0.6"
   },
   "devDependencies": {
-    "pixi-shim": "^1.3.7",
+    "pixi-shim": "^1.3.8",
     "eslint": "^5.5.0",
     "html-webpack-plugin": "^3.2.0",
     "istanbul-instrumenter-loader": "^3.0.1",

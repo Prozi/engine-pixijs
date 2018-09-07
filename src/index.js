@@ -14,8 +14,7 @@ module.exports = function (PIXI) {
     }
     onUpdate() {
       super.onUpdate()
-      this.sprite.x = this.position.x
-      this.sprite.y = this.position.y
+      this.sprite.position.set(this.position.x, this.position.y)
     }
   }
 
@@ -29,8 +28,7 @@ module.exports = function (PIXI) {
     }
     onUpdate() {
       super.onUpdate()
-      this.container.x = this.position.x
-      this.container.y = this.position.y
+      this.container.position.set(this.position.x, this.position.y)
     }
   }
 
@@ -44,8 +42,7 @@ module.exports = function (PIXI) {
     }
     onUpdate() {
       super.onUpdate()
-      this.container.x = this.position.x
-      this.container.y = this.position.y
+      this.container.position.set(this.position.x, this.position.y)
     }
   }
 

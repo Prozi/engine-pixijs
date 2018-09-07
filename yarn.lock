@@ -16,9 +16,9 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@minininja/engine@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@minininja/engine/-/engine-1.0.5.tgz#acc7384601866f5d1fdeb01af792e9ec001bb3f5"
+"@minininja/engine@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@minininja/engine/-/engine-1.0.6.tgz#b78cc028eda4623a4f600fb16b4dee4e8c40824d"
   dependencies:
     http-server "^0.11.1"
     jsdoc-template "https://github.com/braintree/jsdoc-template.git"
@@ -833,9 +833,9 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
-canvas-prebuilt@~1:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/canvas-prebuilt/-/canvas-prebuilt-1.6.0.tgz#f8dd9abe81fdc2103a39d8362df3219d6d83f788"
+canvas-prebuilt@~1.4:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/canvas-prebuilt/-/canvas-prebuilt-1.4.0.tgz#1908f1a7a3dc8e32573baec8a2457139f367d065"
   dependencies:
     node-pre-gyp "^0.6.29"
 
@@ -2967,9 +2967,9 @@ jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
 
-"jsdoc-template@git+https://github.com/braintree/jsdoc-template.git":
+"jsdoc-template@https://github.com/braintree/jsdoc-template.git":
   version "3.2.0"
-  resolved "git+https://github.com/braintree/jsdoc-template.git#9ac837f2a774610c3de55431454777ae2419ba11"
+  resolved "https://github.com/braintree/jsdoc-template.git#9ac837f2a774610c3de55431454777ae2419ba11"
 
 jsdom-global@latest:
   version "3.0.2"
@@ -4056,11 +4056,11 @@ pixi-gl-core@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/pixi-gl-core/-/pixi-gl-core-1.1.4.tgz#8b4b5c433b31e419bc379dc565ce1b835a91b372"
 
-pixi-shim@^1.3.7:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/pixi-shim/-/pixi-shim-1.3.7.tgz#a4606b99b86cc9bce151a238325ca3a5828656bf"
+pixi-shim@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/pixi-shim/-/pixi-shim-1.3.8.tgz#fdf63e0cefbd6fbb40cdb74f8526ed4175af8518"
   dependencies:
-    canvas-prebuilt "~1"
+    canvas-prebuilt "~1.4"
     jsdom latest
     jsdom-global latest
     pixi.js latest
