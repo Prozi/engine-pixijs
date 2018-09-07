@@ -36,6 +36,11 @@ const {Sprite, Container, ParticleContainer} = require('@minininja/pixijs')(PIXI
 ```
 
 
+## About
+
+All classes are extended from `GameObject` from *The engine*.
+
+
 ## License
 
 MIT

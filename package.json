@@ -1,6 +1,6 @@
 {
   "name": "@minininja/pixijs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "mini.ninja Game Engine + pixi.js variant - universal for bootstrapping games in 2d.",
   "main": "src/index.js",
   "scripts": {
