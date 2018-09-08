@@ -16,12 +16,9 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@minininja/engine@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@minininja/engine/-/engine-1.0.6.tgz#b78cc028eda4623a4f600fb16b4dee4e8c40824d"
-  dependencies:
-    http-server "^0.11.1"
-    jsdoc-template "https://github.com/braintree/jsdoc-template.git"
+"@minininja/engine@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@minininja/engine/-/engine-1.0.7.tgz#7407d9d202b87dedc54fbc6f77ebc74928db9f57"
 
 "@webassemblyjs/ast@1.5.13":
   version "1.5.13"

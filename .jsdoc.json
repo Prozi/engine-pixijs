@@ -4,7 +4,7 @@
     "dictionaries": ["jsdoc"]
   },
   "source": {
-    "include": ["src", "package.json", "README.md"],
+    "include": ["node_modules/@minininja/engine/src", "src", "package.json", "README.md"],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|out)"
   },
@@ -12,7 +12,7 @@
     "plugins/markdown"
   ],
   "templates": {
-    "referenceTitle": "mini.ninja Engine",
+    "referenceTitle": "mini.ninja Engine + pixi.js",
     "disableSort": false
   },
   "opts": {

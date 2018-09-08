@@ -1,7 +1,7 @@
 'use strict'
 
 const PIXI = require('pixi.js')
-const {Sprite, Container, ParticleContainer, Scene} = require('../src')(PIXI)
+const {Sprite, Container, ParticleContainer, Scene} = require('../src')
 
 /*global describe,it,expect*/
 describe('Base TEST', () => {
@@ -22,12 +22,12 @@ describe('Base TEST', () => {
     expect(() => new Scene({})).not.toThrow()
   })
 
-  it('Proper init flow test', () => {
-    const scene = new Scene({})
-    const object = new Sprite({ onUpdate () { this.updated = true }})
-    scene.addChild(object)
+  it('Proper initialize and lifecycle flow test', () => {
+    const scene = new Scene({
+      children: [new Sprite({ onUpdate () { this.position.x = 1337 }})]
+    })
     scene.onUpdate()
-    expect(object.updated).toEqual(true)
+    expect(scene.children[0].pixiElement.position.x).toEqual(1337)
   })
 
 })

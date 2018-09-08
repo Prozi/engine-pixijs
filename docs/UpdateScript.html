@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      Home - Documentation
+      UpdateScript - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -48,14 +48,14 @@
 
   <div class="top-nav-wrapper">
     <ul>
-      <li  class="active" >
+      <li >
         <a href="index.html">
           
-          
-            <svg fill="#0095dd" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
               <path d="M0 0h24v24H0z" fill="none"/>
             </svg>
+          
           
         </a>
       </li>
@@ -75,45 +75,211 @@
 
   <div id="main">
     
+      <h1 class="page-title">
+        UpdateScript
+      </h1>
+    
 
     
+
+<section>
+  <header>
+    
+      <h2>
+        
+        UpdateScript
+        
+      </h2>
+
+      
+        <div class="class-description">
+          <p>Script extension with one parameter: the onUpdate function</p>
+        </div>
+      
+    
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+        
+
+
+  
+    <h2>Constructor</h2>
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#UpdateScript">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="UpdateScript">
+      <span class="type-signature"></span>new UpdateScript<span class="signature">(onUpdate)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>onUpdate</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>the runner meat of script</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="index.js.html">index.js</a>, <a href="index.js.html#line9">line 9</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+      <h3 class="subsection-title">Extends</h3>
+
       
 
 
-
-    
-
-      
-
-
-  <section class="readme">
-    <article>
-      <h1>@minininja/pixijs</h1><p><em>The engine</em> with pixijs. Ready for gamedev.</p>
-<h2>Installation</h2><p><code>yarn add @minininja/pixijs</code></p>
-<h2>Documentation</h2><p>https://prozi.github.io/engine-pixijs/</p>
-<p>Read more about <em>The engine</em> here:</p>
-<p>https://github.com/Prozi/engine/</p>
-<h2>Contents</h2><p>✅ Sprite: GameObject</p>
-<p>✅ Container: GameObject</p>
-<p>✅ ParticleContainer: GameObject</p>
-<p>✅ Scene: Container</p>
-<p>... and more to come!</p>
-<h2>Usage</h2><p>web + webpack</p>
-<pre class="prettyprint source"><code>const PIXI = require('pixi.js')
-const engine = require('@minininja/pixijs')(PIXI)</code></pre><p>node</p>
-<pre class="prettyprint source"><code>const PIXI = require('pixi-shim')
-const engine = require('@minininja/pixijs')(PIXI)</code></pre><p>then</p>
-<pre class="prettyprint source"><code>const scene = new engine.Scene({})
-const object = new engine.Sprite({ onUpdate () { console.log('foo') }})
-scene.addChild(object)
-setInterval(scene.onUpdate.bind(scene), 1000 / 60)</code></pre><h2>About</h2><p>All classes are extended from <code>GameObject</code> from <em>The engine</em>.</p>
-<h2>License</h2><p>MIT</p>
-<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#112;&#x72;&#x6f;&#x7a;&#x69;&#x38;&#53;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;">&#112;&#x72;&#x6f;&#x7a;&#x69;&#x38;&#53;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
-    </article>
-  </section>
+  <ul>
+    <li>engine.Script</li>
+  </ul>
 
 
     
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+  </article>
+</section>
+
+
 
 
   </div>
