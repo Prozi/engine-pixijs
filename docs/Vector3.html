@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      UpdateScript - Documentation
+      Vector3 - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -76,7 +76,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        UpdateScript
+        Vector3
       </h1>
     
 
@@ -87,13 +87,13 @@
     
       <h2>
         
-        UpdateScript
+        Vector3
         
       </h2>
 
       
         <div class="class-description">
-          <p>Script extension with one parameter: the onUpdate function</p>
+          <p>This is a Vector(x, y, z) with set(position) fuction</p>
         </div>
       
     
@@ -110,19 +110,23 @@
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#UpdateScript">
+    <a class="link-icon" href="#Vector3">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id="UpdateScript">
-      <span class="type-signature"></span>new UpdateScript<span class="signature">(onUpdate)</span><span class="type-signature"></span>
+    <h4 class="name" id="Vector3">
+      <span class="type-signature"></span>new Vector3<span class="signature">(x, y, z)</span><span class="type-signature"></span>
     </h4>
   </span>
 
   
 
 
+
+  <div class="description">
+    <p>Create and initialize</p>
+  </div>
 
 
 
@@ -145,6 +149,8 @@
       
 
       
+        <th>Default</th>
+      
 
       <th class="last">Description</th>
     </tr>
@@ -154,14 +160,14 @@
     
       <tr>
         
-          <td class="name"><code>onUpdate</code></td>
+          <td class="name"><code>x</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      function
+      number
     </span>
 
     
@@ -173,9 +179,85 @@
         
 
         
+          <td class="default">
+            
+              0
+            
+          </td>
+        
 
         <td class="description last">
-          <p>the runner meat of script</p>
+          <p>x-axis position, float</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>y</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+          <td class="default">
+            
+              0
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>y-axis position, float</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>z</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+          <td class="default">
+            
+              0
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>z-axis position, float</p>
           
         </td>
       </tr>
@@ -219,7 +301,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="src_index.js.html">src/index.js</a>, <a href="src_index.js.html#line9">line 9</a>
+          <a href="node_modules_@minininja_engine_src_index.js.html">node_modules/@minininja/engine/src/index.js</a>, <a href="node_modules_@minininja_engine_src_index.js.html#line6">line 6</a>
         </li>
       </ul>
     </dd>
@@ -249,17 +331,6 @@
     </div>
 
     
-      <h3 class="subsection-title">Extends</h3>
-
-      
-
-
-  <ul>
-    <li>engine.Script</li>
-  </ul>
-
-
-    
 
     
 
@@ -271,6 +342,156 @@
 
     
 
+    
+      <h3 class="subsection-title">Methods</h3>
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#set">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="set">
+      <span class="type-signature"></span>set<span class="signature">(position)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Set Vector position by object{x, y, z}</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>position</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>contains {x, y, z}</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="node_modules_@minininja_engine_src_index.js.html">node_modules/@minininja/engine/src/index.js</a>, <a href="node_modules_@minininja_engine_src_index.js.html#line20">line 20</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     
 
     

@@ -6,7 +6,7 @@
   "source": {
     "include": ["node_modules/@minininja/engine/src", "src", "package.json", "README.md"],
     "includePattern": ".js$",
-    "excludePattern": "(node_modules/|out)"
+    "excludePattern": "(out)"
   },
   "plugins": [
     "plugins/markdown"
