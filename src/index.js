@@ -11,45 +11,18 @@ class UpdateScript extends engine.Script {
    * @param {function} onUpdate the runner meat of script
    */
   constructor(onUpdate) {
-    super(Object.assign({name: 'UpdateScript', onUpdate}, props))
-  }
-}
-
-/**
- * GameObject extension with builtin afterUpdate handler
- * @extends engine.GameObject
- */
-class GameObject extends engine.GameObject {
-  constructor(props) {
-    super(props)
-    this.initialize(props)
-  }
-  /**
-   * built in afterUpdate moving pixielement to position
-   */
-  afterUpdate() {
-    super.afterUpdate()
-    this.pixiElement.position.set(this.position.x, this.position.y)
-  }
-  /**
-   * Initializes component with props, DUMMY / For Overwrite in extending class
-   * @param {object} props
-   * @param {string} [props.name=PixiScene]
-   * @param {boolean} [props.active=true]
-   * @param {function} [props.onEnable]
-   * @param {function} [props.onDisable]
-   * @param {function} [props.onStart]
-   * @param {function} [props.onUpdate]
-   */
-  initialize(props) {
+    super(Object.assign({
+      name: 'UpdateScript',
+      onUpdate
+    }, props))
   }
 }
 
 /**
  * Simple GameObject API Sprite with this.container: PIXI.Sprite
- * @extends GameObject
+ * @extends engine.GameObject
  */
-class Sprite extends GameObject {
+class Sprite extends engine.GameObject {
   /**
    * Initializes component with props, with PIXI.Sprite
    * @param {object} props
@@ -60,16 +33,18 @@ class Sprite extends GameObject {
    * @param {function} [props.onStart]
    * @param {function} [props.onUpdate]
    */
-  initialize(props) {    
-    this.pixiElement = new window.PIXI.Sprite(props.config || null)
+  createTransform(config) {
+    const sprite = new window.PIXI.Sprite(config || null)
+    sprite.gameObject = this
+    return sprite
   }
 }
 
 /**
  * Simple GameObject API Container with PIXI.Container
- * @extends GameObject
+ * @extends engine.GameObject
  */
-class Container extends GameObject {
+class Container extends engine.GameObject {
   /**
    * Initializes component with props, with PIXI.Container
    * @param {object} props
@@ -80,16 +55,18 @@ class Container extends GameObject {
    * @param {function} [props.onStart]
    * @param {function} [props.onUpdate]
    */
-  initialize(props) {
-    this.pixiElement = new window.PIXI.Container()
+  createTransform(props) {
+    const container = new window.PIXI.Container()
+    container.gameObject = this
+    return container
   }
 }
 
- /**
+/**
  * Simple GameObject API ParticleContainer with PIXI.particles.ParticleContainer
- * @extends GameObject
+ * @extends engine.GameObject
  */
- class ParticleContainer extends GameObject {
+class ParticleContainer extends engine.GameObject {
   /**
    * Initializes component with props, with PIXI.particles.ParticleContainer
    * @param {object} props
@@ -100,8 +77,10 @@ class Container extends GameObject {
    * @param {function} [props.onStart]
    * @param {function} [props.onUpdate]
    */
-  initialize(props) {
-    this.pixiElement = new window.PIXI.particles.ParticleContainer(props.config || {})
+  createTransform(config) {
+    const container = new window.PIXI.particles.ParticleContainer(config || {})
+    container.gameObject = this
+    return container
   }
 }
 
@@ -121,7 +100,9 @@ class Scene extends Container {
    * @param {function} [props.onUpdate]
    */
   constructor(props) {
-    super(Object.assign({name: 'PixiScene'}, props))
+    super(Object.assign({
+      name: 'PixiScene'
+    }, props))
   }
   /**
    * Initializes component with props, and PIXI.Application
@@ -133,15 +114,23 @@ class Scene extends Container {
    * @param {function} [props.onStart]
    * @param {function} [props.onUpdate]
    */
-  initialize(props) {
-    super.initialize()
-    this.app = new window.PIXI.Application(props.config || null)
-    this.app.stage.addChild(this.pixiElement)
+  createTransform(config) {
+    const container = super.createTransform(config || null)
+    this.app = new window.PIXI.Application(config || null)
+    this.app.stage.addChild(container)
     document.body.appendChild(this.app.view)
+    container.gameObject = this
+    return container
   }
 }
 
-if (typeof module !== 'undefined')
+if (typeof module !== 'undefined') {
   module.exports = {
-    GameObject, UpdateScript, Scene, Sprite, Container, ParticleContainer
+    GameObject: engine.GameObject,
+    UpdateScript,
+    Scene,
+    Sprite,
+    Container,
+    ParticleContainer
   }
+}
