@@ -126,11 +126,11 @@ export default function (PIXI) {
     }
   }
 
-  return Object.assign({
+  return Object.assign({}, engine, {
     UpdateScript,
     Scene,
     Sprite,
     Container,
     ParticleContainer
-  }, engine)
+  })
 }
