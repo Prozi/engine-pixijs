@@ -6,7 +6,7 @@ const {
   Container,
   ParticleContainer,
   Scene
-} = require('../src')
+} = require('../src').default(PIXI)
 
 /*global describe,it,expect*/
 describe('Base TEST', () => {
