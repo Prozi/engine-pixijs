@@ -5,6 +5,7 @@ const {
   Sprite,
   Container,
   ParticleContainer,
+  Game,
   Scene
 } = require('../src').default(PIXI)
 
@@ -27,18 +28,15 @@ describe('Base TEST', () => {
     expect(() => new Scene({})).not.toThrow()
   })
 
-  it('Proper initialize and lifecycle flow test', () => {
-    const gameObject = new Sprite({
+  it('Proper initialize and lifecycle flow test', (done) => {
+    const scene = new Scene({
       onUpdate() {
-        console.log('updated!')
-        this.transform.position.x = 1337
+        done()
       }
     })
-    const scene = new Scene({
-      children: [gameObject.transform]
+    new Game({
+      children: [scene.transform]
     })
-    scene.onUpdate()
-    expect(scene.transform.children[0].position.x).toEqual(1337)
   })
 
 })

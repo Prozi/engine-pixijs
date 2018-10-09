@@ -106,6 +106,31 @@ export default function (PIXI) {
         name: 'PixiScene'
       }, props))
     }
+  }
+
+  /**
+   * Simple GameObject API Container with this.app: PIXI.Application
+   */
+  class Game extends engine.GameObject {
+    /**
+     * Initializes component with props, and PIXI.Container
+     * @param {object} props
+     * @param {string} [props.name=Game]
+     * @param {function} [props.onEnable]
+     * @param {function} [props.onDisable]
+     * @param {function} [props.onStart]
+     * @param {function} [props.onUpdate]
+     */
+    constructor(props) {
+      super(Object.assign({
+        name: 'PixiGame'
+      }, props))
+      PIXI.ticker.shared.add(this.tick.bind(this))
+    }
+    tick() {
+      const children = this.transform.children.filter((child) => child.gameObject).map((child) => child.gameObject)
+      children.forEach((child) => child.onUpdate())
+    }
     /**
      * Initializes component with props, and PIXI.Application
      * @param {object} props
@@ -117,17 +142,16 @@ export default function (PIXI) {
      * @param {function} [props.onUpdate]
      */
     createTransform(config) {
-      const container = super.createTransform(config || null)
       this.app = new window.PIXI.Application(config || null)
-      this.app.stage.addChild(container)
+      this.app.stage.gameObject = this
       document.body.appendChild(this.app.view)
-      container.gameObject = this
-      return container
+      return this.app.stage
     }
   }
 
   return Object.assign({}, engine, {
     UpdateScript,
+    Game,
     Scene,
     Sprite,
     Container,
