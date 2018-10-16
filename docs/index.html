@@ -89,7 +89,10 @@
   <section class="readme">
     <article>
       <h1>@minininja/pixijs</h1><p><em>The engine</em> with pixijs. Ready for gamedev.</p>
-<h2>Installation</h2><p><code>yarn add @minininja/pixijs</code></p>
+<h2>Installation</h2><p>It requires pixi.js as peer dependency the great 2d framework.</p>
+<p><code>yarn add @minininja/pixijs pixi.js --save</code></p>
+<p>or</p>
+<p><code>npm install @minininja/pixijs pixi.js --save</code></p>
 <h2>Documentation</h2><p>https://prozi.github.io/engine-pixijs/</p>
 <p>Read more about <em>The engine</em> here:</p>
 <p>https://github.com/Prozi/engine/</p>
@@ -99,16 +102,14 @@
 <p>✅ Scene: Container</p>
 <p>... and more to come!</p>
 <h2>Usage</h2><p>web + webpack</p>
-<pre class="prettyprint source"><code>const PIXI = require('pixi.js')
-const engine = require('@minininja/pixijs')(PIXI)</code></pre><p>node</p>
-<pre class="prettyprint source"><code>const PIXI = require('pixi-shim')
-const engine = require('@minininja/pixijs')(PIXI)</code></pre><p>then</p>
+<pre class="prettyprint source"><code>const engine = require('@minininja/pixijs')</code></pre><p>node</p>
+<pre class="prettyprint source"><code>const engine = require('@minininja/pixijs')</code></pre><p>then</p>
 <pre class="prettyprint source"><code>const scene = new engine.Scene({})
 const object = new engine.Sprite({ onUpdate () { console.log('foo') }})
 scene.addChild(object)
 setInterval(scene.onUpdate.bind(scene), 1000 / 60)</code></pre><h2>About</h2><p>All classes are extended from <code>GameObject</code> from <em>The engine</em>.</p>
 <h2>License</h2><p>MIT</p>
-<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#x70;&#x72;&#x6f;&#x7a;&#105;&#56;&#53;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x70;&#x72;&#x6f;&#x7a;&#105;&#56;&#53;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a></p>
+<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#x70;&#114;&#111;&#x7a;&#105;&#x38;&#53;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#x70;&#114;&#111;&#x7a;&#105;&#x38;&#53;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;</a></p>
     </article>
   </section>
 

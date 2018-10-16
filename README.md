@@ -5,7 +5,13 @@
 
 ## Installation
 
-`yarn add @minininja/pixijs`
+It requires pixi.js as peer dependency the great 2d framework.
+
+`yarn add @minininja/pixijs pixi.js --save`
+
+or
+
+`npm install @minininja/pixijs pixi.js --save`
 
 
 ## Documentation
@@ -36,16 +42,14 @@ https://github.com/Prozi/engine/
 web + webpack
 
 ```
-const PIXI = require('pixi.js')
-const engine = require('@minininja/pixijs')(PIXI)
+const engine = require('@minininja/pixijs')
 ```
 
 
 node
 
 ```
-const PIXI = require('pixi-shim')
-const engine = require('@minininja/pixijs')(PIXI)
+const engine = require('@minininja/pixijs')
 ```
 
 

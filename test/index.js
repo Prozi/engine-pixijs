@@ -1,13 +1,12 @@
 'use strict'
 
-const PIXI = require('pixi.js')
 const {
   Sprite,
   Container,
   ParticleContainer,
   Game,
   Scene
-} = require('../src').default(PIXI)
+} = require('../src')
 
 /*global describe,it,expect*/
 describe('Base TEST', () => {
