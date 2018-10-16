@@ -30,7 +30,7 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "@minininja/engine": "^1.1.5"
+    "@minininja/engine": "^1.1.6"
   },
   "devDependencies": {
     "eslint": "^5.6.1",

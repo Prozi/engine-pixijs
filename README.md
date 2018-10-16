@@ -1,11 +1,11 @@
 # @minininja/pixijs
 
-*The engine* with pixijs. Ready for gamedev.
+*The @minininja/engine* + pixijs. Ready for game development.
+
+It requires `pixi.js` as a peer dependency.
 
 
 ## Installation
-
-It requires pixi.js as peer dependency the great 2d framework.
 
 `yarn add @minininja/pixijs pixi.js --save`
 

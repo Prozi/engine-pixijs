@@ -108,9 +108,13 @@ export class Scene extends Container {
 }
 
 /**
- * Simple GameObject API Container with this.app: PIXI.Application
+ * Exntesion of PIXI.Application
+ * with mouse and resize support
+ * 
+ * just add any of engine.* classes' transforms
+ * and it will update their gameObjects' scripts
  */
-export class Game extends engine.GameObject {
+export class Game extends PIXI.Application {
   /**
    * Initializes component with props, and PIXI.Container
    * @param {object} props
@@ -120,30 +124,39 @@ export class Game extends engine.GameObject {
    * @param {function} [props.onStart]
    * @param {function} [props.onUpdate]
    */
-  constructor(props) {
-    super(Object.assign({
-      name: 'PixiGame'
-    }, props))
-    PIXI.ticker.shared.add(this.tick.bind(this))
+  constructor(props = {}) {
+    super({
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
+    this.props = props
+    this.state = {
+      mouse: new engine.Vector3()
+    }
+    this.addCanvas()
+    this.bindEvents()
+    this.startScripts()
   }
-  tick() {
-    const children = this.transform.children.filter((child) => child.gameObject).map((child) => child.gameObject)
-    children.forEach((child) => child.onUpdate())
+  addCanvas() {
+    document.body.appendChild(this.view)
   }
-  /**
-   * Initializes component with props, and PIXI.Application
-   * @param {object} props
-   * @param {string} [props.name=PixiScene]
-   * @param {boolean} [props.active=true]
-   * @param {function} [props.onEnable]
-   * @param {function} [props.onDisable]
-   * @param {function} [props.onStart]
-   * @param {function} [props.onUpdate]
-   */
-  createTransform(config) {
-    this.app = new PIXI.Application(config || null)
-    this.app.stage.gameObject = this
-    document.body.appendChild(this.app.view)
-    return this.app.stage
+  bindEvents() {
+    window.addEventListener('resize', () => {
+      setTimeout(() => {
+        this.renderer.resize(window.innerWidth, window.innerHeight)
+      })
+    })
+    window.addEventListener('pointermove', (event) => {
+      this.state.mouse.set({ x: event.screenX, y: event.screenY })
+    })
+  }
+  updateScripts() {
+    const scripts = this.stage.children.filter((child) => child.gameObject)
+      .map((child) => child.gameObject)
+    scripts.forEach((child) => child.onUpdate())
+    scripts.forEach((child) => child.afterUpdate())
+  }
+  startScripts() {
+    PIXI.ticker.shared.add(() => this.updateScripts())
   }
 }

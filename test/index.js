@@ -33,9 +33,8 @@ describe('Base TEST', () => {
         done()
       }
     })
-    new Game({
-      children: [scene.transform]
-    })
+    const game = new Game()
+    game.stage.addChild(scene.transform)
   })
 
 })
