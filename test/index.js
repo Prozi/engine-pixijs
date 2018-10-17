@@ -4,7 +4,7 @@ const {
   Sprite,
   Container,
   ParticleContainer,
-  Game,
+  Application,
   Scene
 } = require('../src')
 
@@ -33,7 +33,7 @@ describe('Base TEST', () => {
         done()
       }
     })
-    const game = new Game()
+    const game = new Application()
     game.stage.addChild(scene.transform)
   })
 
