@@ -14,6 +14,18 @@ or
 `npm install @minininja/pixijs pixi.js --save`
 
 
+## Demo / Benchmark
+
+https://prozi.github.io/engine-pixijs/demo/
+
+See at any time corresponding FPS to
+
+`app.currentScene.transform.children.length`
+
+All sprites are updated each frame if they're active (in benchmark they are)
+And it works fast and smooth
+
+
 ## Documentation
 
 https://prozi.github.io/engine-pixijs/
@@ -26,6 +38,8 @@ https://github.com/Prozi/engine/
 
 ## Contents
 
+✅ UpdateScript: Script
+
 ✅ Sprite: GameObject
 
 ✅ Container: GameObject
@@ -33,6 +47,10 @@ https://github.com/Prozi/engine/
 ✅ ParticleContainer: GameObject
 
 ✅ Scene: Container
+
+✅ Application: PIXI.Application
+
+✅ AnimatedSprite: Sprite
 
 ... and more to come!
 
@@ -56,7 +74,7 @@ const engine = require('@minininja/pixijs')
 then
 
 ```
-const scene = new engine.Scene({})
+const scene = new engine.Scene()
 const object = new engine.Sprite({ onUpdate () { console.log('foo') }})
 scene.addChild(object)
 setInterval(scene.onUpdate.bind(scene), 1000 / 60)
