@@ -169,7 +169,7 @@ export class Application extends PIXI.Application {
 export class AnimatedSprite extends Sprite {
   constructor(props = {}) {
     super(props);
-    this.frame = 0
+    this.frame = -1
     this.props = props || {}
     this.props.frame.textureWidth = this.transform.texture.width
     this.afterUpdate()
