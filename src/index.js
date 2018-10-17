@@ -114,7 +114,7 @@ export class Scene extends Container {
  * just add any of engine.* classes' transforms
  * and it will update their gameObjects' scripts
  */
-export class Game extends PIXI.Application {
+export class Application extends PIXI.Application {
   /**
    * Initializes component with props, and PIXI.Container
    * @param {object} props
@@ -147,7 +147,7 @@ export class Game extends PIXI.Application {
       })
     })
     window.addEventListener('pointermove', (event) => {
-      this.state.mouse.set({ x: event.screenX, y: event.screenY })
+      this.state.mouse.set({ x: event.pageX, y: event.pageY })
     })
   }
   updateScripts() {
@@ -158,5 +158,47 @@ export class Game extends PIXI.Application {
   }
   startScripts() {
     PIXI.ticker.shared.add(() => this.updateScripts())
+  }
+}
+
+/**
+ * Utility base class for infinite animation class
+ * please extend further for convenience
+ * @extends Sprite
+ */
+export class AnimatedSprite extends Sprite {
+  constructor(props = {}) {
+    super(props);
+    this.frame = 0
+    this.props = props || {}
+    this.props.frame.textureWidth = this.transform.texture.width
+    this.afterUpdate()
+  }
+  updateTransform() {
+    if (!this.props.transform) return
+    Object.keys(this.props.transform).forEach((prop) => {
+      this.transform[prop].set(this.props.transform[prop])
+    })
+  }
+  getFrame() {
+    return Math.floor(Date.now() * this.props.frame.speed) % this.props.frame.count
+  }
+  updateFrame(nextFrame) {
+    this.frame = nextFrame
+    const columns = this.props.frame.textureWidth / (this.props.frame.width + (this.props.frame.padding || 0))
+    const col = this.frame % columns
+    const row = Math.floor(this.frame / columns)
+    this.transform.texture.frame = new PIXI.Rectangle(
+      col * (this.props.frame.width + (this.props.frame.padding || 0)),
+      row * (this.props.frame.height + (this.props.frame.padding || 0)),
+      this.props.frame.width,
+      this.props.frame.height)
+  }
+  afterUpdate() {
+    const nextFrame = this.getFrame()
+    if (this.frame !== nextFrame) {
+      this.updateFrame(nextFrame)
+      this.updateTransform()
+    }
   }
 }
