@@ -1,7 +1,7 @@
 'use strict'
 
 import * as PIXI from 'pixi.js'
-import engine from '@minininja/engine'
+import * as engine from '@minininja/engine'
 
 /**
  * Script extension with one parameter: the onUpdate function
