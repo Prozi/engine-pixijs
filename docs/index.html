@@ -93,31 +93,94 @@
 <h2>Installation</h2><p><code>yarn add @minininja/pixijs pixi.js --save</code></p>
 <p>or</p>
 <p><code>npm install @minininja/pixijs pixi.js --save</code></p>
-<h2>Demo / Benchmark</h2><p>https://prozi.github.io/engine-pixijs/demo/</p>
-<p>See at any time corresponding FPS to</p>
+<h2>Demo / Benchmark</h2><p><a href="https://prozi.github.io/engine-pixijs/demo/">https://prozi.github.io/engine-pixijs/demo/</a></p>
+<h2>Demo Source Code</h2><pre class="prettyprint source lang-javascript"><code>'use strict'
+
+import { utils, loader, ticker, Texture } from 'pixi.js'
+import { Application, AnimatedSprite } from '../src'
+import StatsScene from './statsScene'
+
+export default class App extends Application {
+  constructor() {
+    super()
+    this.loadAssets()
+  }
+  createCursor() {
+    const $mouse = this.state.mouse
+    this.cursor = this.createAnimatedFire(function () {
+      this.transform.position.set($mouse.x, $mouse.y)
+    })
+    return this.cursor
+  }
+  createAnimatedFire(onUpdate) {
+    return new AnimatedSprite({
+      transform: {
+        anchor: 0.5
+      },
+      frame: {
+        padding: 200,
+        width: 200,
+        height: 200,
+        count: 61,
+        speed: 1 / 61 // whole turn = 1s default speed without multiplier
+      },
+      config: new Texture(utils.TextureCache.cursor),
+      onUpdate
+    })
+  }
+  addToScene(gameObject) {
+    this.currentScene.transform.addChild(gameObject.transform)
+  }
+  loadAssets() {
+    loader.add('cursor', 'static/img/fire_circles_400x400.png')
+    loader.onComplete.add(() => {
+      this.currentScene = new StatsScene()
+      this.stage.addChild(this.currentScene.transform)  
+      this.addToScene(this.createCursor())
+      this.benchmark()
+    })
+    loader.load()
+  }
+  getAnimatedSpriteFrame(speed) {
+    return Math.floor(Date.now() * speed) % this.props.frame.count
+  }
+  benchmark() {
+    ticker.shared.add(() => {
+      const speed = Math.random()
+      const sprite = this.createAnimatedFire()
+      sprite.getFrame = this.getAnimatedSpriteFrame.bind(sprite, speed)
+      sprite.transform.position.set(
+        Math.random() * window.innerWidth,
+        Math.random() * window.innerHeight
+      )
+      sprite.updateTransform()
+      this.addToScene(sprite)
+    })
+  }
+}</code></pre><p>See at any time corresponding FPS to</p>
 <p><code>app.currentScene.transform.children.length</code></p>
 <p>All sprites are updated each frame if they're active (in benchmark they are)
 And it works fast and smooth</p>
-<h2>Documentation</h2><p>https://prozi.github.io/engine-pixijs/</p>
-<p>Read more about <em>The engine</em> here:</p>
-<p>https://github.com/Prozi/engine/</p>
-<h2>Contents</h2><p>✅ UpdateScript: Script</p>
+<h2>Documentation</h2><p><a href="https://prozi.github.io/engine-pixijs/">https://prozi.github.io/engine-pixijs/</a></p>
+<h2>Must Read (Philosophy, Flow, Concepts)</h2><p>Read more about <em>The engine</em> here:</p>
+<p><a href="https://github.com/Prozi/engine/">https://github.com/Prozi/engine/</a></p>
+<h2>Contents of this repos' exports'</h2><p>✅ UpdateScript: Script</p>
 <p>✅ Sprite: GameObject</p>
+<p>✅ AnimatedSprite: Sprite</p>
 <p>✅ Container: GameObject</p>
 <p>✅ ParticleContainer: GameObject</p>
 <p>✅ Scene: Container</p>
 <p>✅ Application: PIXI.Application</p>
-<p>✅ AnimatedSprite: Sprite</p>
 <p>... and more to come!</p>
-<h2>Usage</h2><p>web + webpack</p>
-<pre class="prettyprint source"><code>const engine = require('@minininja/pixijs')</code></pre><p>node</p>
-<pre class="prettyprint source"><code>const engine = require('@minininja/pixijs')</code></pre><p>then</p>
-<pre class="prettyprint source"><code>const scene = new engine.Scene()
-const object = new engine.Sprite({ onUpdate () { console.log('foo') }})
-scene.addChild(object)
-setInterval(scene.onUpdate.bind(scene), 1000 / 60)</code></pre><h2>About</h2><p>All classes are extended from <code>GameObject</code> from <em>The engine</em>.</p>
+<ul>
+<li><p>All classes<sup>1</sup> are extended from <code>GameObject</code> from <em>@minininja/engine</em>.</p>
+</li>
+<li><p>And have a <code>transform</code> typeof <code>Transform</code> property that is a <code>PIXI.DisplayObject</code> descendant.</p>
+</li>
+</ul>
+<p><sup>1</sup>) <code>Application</code> instead has a <code>currentScene</code> typeof <code>Scene</code>.</p>
 <h2>License</h2><p>MIT</p>
-<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#x70;&#x72;&#x6f;&#122;&#105;&#56;&#x35;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x70;&#x72;&#x6f;&#122;&#105;&#56;&#x35;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<h2>Author</h2><p>Jacek Pietal <a href="mailto:&#112;&#114;&#111;&#x7a;&#x69;&#x38;&#53;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;">&#112;&#114;&#111;&#x7a;&#x69;&#x38;&#53;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
     </article>
   </section>
 
